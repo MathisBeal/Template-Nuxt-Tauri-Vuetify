@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "test-nuxt-tauri-vuetify",
+  "productName": "Template Nuxt Tauri Vuetify",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+  "identifier": "com.mathis-beal.template",
   "build": {
     "frontendDist": "../.output/public",
     "devUrl": "http://localhost:3000",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "test-nuxt-tauri-vuetify",
+        "title": "Template App",
         "width": 800,
         "height": 600,
         "resizable": true,
