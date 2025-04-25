@@ -9,6 +9,15 @@ struct Counter {
 fn increment_counter(counter: State<Counter>) -> i32 {
     let mut value = counter.value.lock().unwrap();
     *value += 1;
+    println!("RUST: Counter incremented to: {}", value);
+    *value
+}
+
+#[tauri::command]
+fn reset_counter(counter: State<Counter>) -> i32 {
+    let mut value = counter.value.lock().unwrap();
+    *value = 0;
+    println!("RUST: Counter resetted");
     *value
 }
 
@@ -18,17 +27,17 @@ pub fn run() {
         .manage(Counter {
             value: Mutex::new(0),
         })
-        .invoke_handler(tauri::generate_handler![increment_counter])
-        .setup(|app| {
-            if cfg!(debug_assertions) {
-                app.handle().plugin(
-                    tauri_plugin_log::Builder::default()
-                        .level(log::LevelFilter::Info)
-                        .build(),
-                )?;
-            }
-            Ok(())
-        })
+        .invoke_handler(tauri::generate_handler![increment_counter, reset_counter])
+        // .setup(|app| {
+        //     if cfg!(debug_assertions) {
+        //         app.handle().plugin(
+        //             tauri_plugin_log::Builder::default()
+        //                 .level(log::LevelFilter::Info)
+        //                 .build(),
+        //         )?;
+        //     }
+        //     Ok(())
+        // })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

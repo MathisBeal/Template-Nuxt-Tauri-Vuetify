@@ -1,29 +1,31 @@
 <template>
-  <div>
-    <v-container grid-list-md>
-      <h1 justify-center>Welcome on the Nuxt + Tauri + Vuetify template</h1>
-      <t justify-center align-center>This is a basic project with Nuxt, Tauri & Vuetify configured for quick start.</t>
-      <br />
-      <br />
-      <br />
-      <v-btn color="primary" @click="incrementCounter">Increment</v-btn>
-      <p>Counter: {{ counter }}</p>
+  <div style="width: 60vw; height: 60vh; margin: auto;">
+    <v-container class="justify-center d-flex flex-column">
+      <h1 class="text-center ma-5">Welcome on the Nuxt + Tauri + Vuetify template</h1>
+      <p>This is a basic project with Nuxt, Tauri & Vuetify configured for quick start.</p>
+      <p>The packet manager is <code>pnpm</code>.</p>
+      <v-btn color="primary mt-16" @click="incrementCounter">Increment</v-btn>
+      <p class="text-center mt-5">Counter: {{ counter }}</p>
     </v-container>
   </div>
 </template>
 
 <script lang="ts" setup>
 
-// import { invoke } from '@tauri-apps/api/core';
 import { invoke } from "@tauri-apps/api/core";
 import { ref } from "vue";
 
 const counter = ref(0);
 
 async function incrementCounter() {
-  console.log('Incrementing counter');
   counter.value = await invoke('increment_counter');
 }
+
+async function resetCounter() {
+  counter.value = await invoke('reset_counter');
+}
+
+resetCounter();
 
 </script>
 
