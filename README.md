@@ -1,5 +1,3 @@
-Here’s a basic README.md file for your Nuxt + Tauri + Vuetify project:
-
 # Nuxt + Tauri + Vuetify Template
 
 This project is a template for building desktop applications using **Nuxt 3**, **Tauri**, and **Vuetify**. It provides a basic setup to get started quickly with these technologies.
@@ -31,8 +29,8 @@ This project is a template for building desktop applications using **Nuxt 3**, *
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/MathisBeal/Template-Nuxt-Tauri-Vuetify.git
+   cd Template-Nuxt-Tauri-Vuetify
    ```
 
 2. Install dependencies:
